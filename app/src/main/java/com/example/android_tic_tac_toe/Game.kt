@@ -18,6 +18,7 @@ class Game {
         return true
     }
 
+
     fun switchPlayer() {
         currentPlayer = if (currentPlayer == "X") "O" else "X"
     }
