@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">android-tic-tac-toe</string>
+    <string name="player_turn">%1$s play</string>
 </resources>
