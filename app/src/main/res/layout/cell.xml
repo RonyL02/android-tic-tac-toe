@@ -3,7 +3,6 @@
 <ImageView android:id="@+id/cell_content"
     android:importantForAccessibility="no"
     android:padding="10dp"
-    android:src="@drawable/x"
     tools:ignore="MissingConstraints"
     android:layout_height="100dp"
     android:layout_width="100dp"

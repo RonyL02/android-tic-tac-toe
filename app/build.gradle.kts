@@ -6,7 +6,9 @@ plugins {
 android {
     namespace = "com.example.android_tic_tac_toe"
     compileSdk = 35
-
+    buildFeatures {
+        viewBinding = true
+    }
     defaultConfig {
         applicationId = "com.example.android_tic_tac_toe"
         minSdk = 29
