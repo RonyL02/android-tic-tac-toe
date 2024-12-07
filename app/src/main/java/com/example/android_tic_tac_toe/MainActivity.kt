@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -25,6 +24,8 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        binding.playAgain.visibility = View.INVISIBLE
+        binding.endGameText.visibility = View.INVISIBLE
         game = Game()
         initCells()
         updateTurnButton()
@@ -40,8 +41,8 @@ class MainActivity : AppCompatActivity() {
 
         for (i in 0..<grid.childCount) {
             val cell = grid.getChildAt(i) as ImageView
+            
             cell.setImageDrawable(null)
-
             cell.id = i
             cell.setOnClickListener(::onclick)
         }
@@ -63,28 +64,27 @@ class MainActivity : AppCompatActivity() {
         val winner = game.checkWinner()
 
         if (winner != null) {
-            openFinishDialog("Player ${game.currentPlayer.value} won")
+            handleGameEnd("Player ${game.currentPlayer.value} won")
         } else if (game.isBoardFull()) {
-            openFinishDialog("It's a draw")
+            handleGameEnd("It's a draw")
         } else {
             game.switchPlayer()
             updateTurnButton()
         }
     }
 
-    private fun openFinishDialog(title: String) {
-        AlertDialog.Builder(this)
-            .setMessage(title)
-            .setPositiveButton("play again") { _, _ ->
-                game.resetGame()
-                initCells()
-            }
-            .setNegativeButton("exit") { _, _ ->
-                finish()
-            }
-            .setOnCancelListener {
-                finish()
-            }
-            .show()
+    private fun handleGameEnd(title: String) {
+        binding.playAgain.visibility = View.VISIBLE
+        binding.endGameText.visibility = View.VISIBLE
+        binding.turnButton.visibility = View.INVISIBLE
+        binding.endGameText.text = title
+        binding.playAgain.setOnClickListener {
+            game.resetGame()
+            initCells()
+            binding.playAgain.visibility = View.INVISIBLE
+            binding.endGameText.visibility = View.INVISIBLE
+            binding.turnButton.visibility = View.VISIBLE
+            updateTurnButton()
+        }
     }
 }
