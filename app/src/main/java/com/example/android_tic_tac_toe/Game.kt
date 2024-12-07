@@ -2,7 +2,7 @@ package com.example.android_tic_tac_toe
 
 class Game {
     companion object {
-        val GRID_SIZE = 3
+        const val GRID_SIZE = 3
     }
 
     enum class CellState(val value: String) {
@@ -34,7 +34,7 @@ class Game {
         currentPlayer = if (currentPlayer == CellState.X) CellState.O else CellState.X
     }
 
-    fun checkWinner(): CellState {
+    fun checkWinner(): CellState? {
         for (i in board.indices) {
             if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != CellState.EMPTY) {
                 return board[i][0]
@@ -53,25 +53,15 @@ class Game {
             return board[0][2]
         }
 
-        return CellState.EMPTY
+        return null
     }
 
     fun isBoardFull(): Boolean {
-        for (row in board) {
-            if (row.contains(CellState.EMPTY)) {
-                return false
-            }
-        }
-
-        return true
+        return board.none { row -> row.contains(CellState.EMPTY) }
     }
 
     fun resetGame() {
-        for (i in 0..2) {
-            for (j in 0..2) {
-                board[i][j] = CellState.EMPTY
-            }
-        }
+        board.forEach { row -> row.fill(CellState.EMPTY) }
 
         currentPlayer = CellState.X
     }

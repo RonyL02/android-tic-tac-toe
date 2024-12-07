@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onclick(view: View) {
-        val row = view.id / 3
-        val col = view.id % 3
+        val row = view.id / Game.GRID_SIZE
+        val col = view.id % Game.GRID_SIZE
 
         val isMoveValid = game.makeMove(row, col)
 
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         val winner = game.checkWinner()
 
-        if (winner != Game.CellState.EMPTY) {
+        if (winner != null) {
             openFinishDialog("Player ${game.currentPlayer.value} won")
         } else if (game.isBoardFull()) {
             openFinishDialog("It's a draw")
