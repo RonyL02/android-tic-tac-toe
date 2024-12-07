@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity() {
 
         for (i in 0..<grid.childCount) {
             val cell = grid.getChildAt(i) as ImageView
+            
             cell.setImageDrawable(null)
-
             cell.id = i
             cell.setOnClickListener(::onclick)
         }
@@ -77,8 +77,8 @@ class MainActivity : AppCompatActivity() {
         binding.playAgain.visibility = View.VISIBLE
         binding.endGameText.visibility = View.VISIBLE
         binding.turnButton.visibility = View.INVISIBLE
-        binding.endGameText.text= title
-        binding.playAgain.setOnClickListener{
+        binding.endGameText.text = title
+        binding.playAgain.setOnClickListener {
             game.resetGame()
             initCells()
             binding.playAgain.visibility = View.INVISIBLE
@@ -86,8 +86,5 @@ class MainActivity : AppCompatActivity() {
             binding.turnButton.visibility = View.VISIBLE
             updateTurnButton()
         }
-
-
-
     }
 }
