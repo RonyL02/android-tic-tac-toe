@@ -14,6 +14,7 @@
         android:columnCount="3"
         android:rowCount="3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -45,9 +46,41 @@
         android:textAlignment="center"
         android:textFontWeight="@integer/material_motion_duration_medium_2"
         android:textSize="48sp"
+        android:backgroundTint="#2196F3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grid" />
+
+    <TextView
+        android:id="@+id/endGameText"
+        android:layout_width="361dp"
+        android:layout_height="87dp"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        android:background="@drawable/rounded_background"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/grid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/grid" />
+
+    <Button
+        android:id="@+id/playAgain"
+        android:layout_width="380dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textFontWeight="@integer/material_motion_duration_medium_2"
+        android:textSize="48sp"
+        android:text="@string/play_again"
+        android:backgroundTint="#2196F3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grid" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
